@@ -31,9 +31,10 @@ public class SecurityConfig {
                                 "/v3/api-docs/**"
                         ).permitAll()
                         .requestMatchers("/auth/register/patient").permitAll()
+                        .requestMatchers("/auth/register/doctor").permitAll()
                         .requestMatchers("/auth/login").authenticated()
                         .requestMatchers("/doctors/**").hasAnyRole("DOCTOR")
-                        .requestMatchers("/patients/**").hasAnyRole("PATIENT")
+                        .requestMatchers("/patients/**").hasAnyRole("PATIENT", "DOCTOR")
                         .requestMatchers("/appointments/**").hasAnyRole("PATIENT", "DOCTOR")
                         .requestMatchers("/medical-services/**").hasAnyRole("DOCTOR", "PATIENT")
                         .requestMatchers("/medical-records/**").hasAnyRole("DOCTOR", "PATIENT")

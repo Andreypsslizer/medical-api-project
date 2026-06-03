@@ -1,5 +1,6 @@
 package com.example.medicalapiproject.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -45,6 +46,7 @@ public class Patient {
     )
     private User user;
 
+    @JsonIgnore
     @OneToMany(
             mappedBy = "patient"
     )

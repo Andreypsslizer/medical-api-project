@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -46,7 +47,7 @@ public class AppointmentService {
         appointment.setService(medicalService);
         appointment.setTimestamp(appointmentDTO.getTimestamp());
         appointment.setNotes(appointmentDTO.getNotes());
-        appointment.setStatus(Set.of(Status.CREATED));
+        appointment.setStatus(new HashSet<>(Set.of(Status.CREATED)));
 
         return appointmentRepository.save(appointment);
     }
@@ -80,7 +81,7 @@ public class AppointmentService {
                         "Appointment not found with id: " + id
                 ));
 
-        appointment.setStatus(Set.of(Status.CANCELLED));
+        appointment.setStatus(new HashSet<>(Set.of(Status.CREATED)));
 
         return appointmentRepository.save(appointment);
     }

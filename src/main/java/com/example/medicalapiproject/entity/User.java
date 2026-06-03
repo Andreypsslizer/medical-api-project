@@ -38,9 +38,11 @@ public class User {
     @Column(columnDefinition = "VARCHAR(255)")
     private Set<Role> roles;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "user")
     private Patient patient;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "user")
     private Doctor doctor;
 }
